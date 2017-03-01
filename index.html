@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .tile-links{
+    height: 100px;
+    overflow: scroll;
+  }
+  </style>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+  <h2>Tile Query</h2>
+<label for="">Zoom Level: </label>
+<input type="text" value="17" id="zoomLevel">
+<br>
+<label for="">Layer Name: </label>
+<select id="layerName">
+  <option value="ortho">ortho</option>
+  <option value="dem">dem</option>
+</select>
+
+<p> <input type="button" onclick="getImage()" value="Get Image"/> </p>  
+<ul class="tile-links">
+
+</ul>
+  <script>
+  var zoom = document.querySelector('#zoomLevel');
+  var layer = document.querySelector('#layerName');
+  var tileList = document.querySelector('.tile-links');
+
+  function getImage() {
+    var droneAPI = new DroneAPI(zoom,layer,tileList);
+    updateTileLinks(droneAPI);
+  }
+  </script>
+</body>
+</html>
